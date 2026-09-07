@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecommerce-backend"
+version = "0.1.0"
+description = "Backend for an AI-powered e-commerce SaaS platform"
+requires-python = "==3.11.9"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic-settings",
+
+    # Database
+    "sqlalchemy",
+    "asyncpg", 
+    "alembic",
+    "email-validator",
+    "argon2-cffi",
+    "PyJWT",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "httpx",
+    "pytest-asyncio>=0.24",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
